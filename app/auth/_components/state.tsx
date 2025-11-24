@@ -6,8 +6,8 @@ import Verify from "./verify";
 import { useAuth } from "@/hooks/use-auth";
 
 const StateAuth = () => {
-    const { step } = useAuth();
-    return <>{step === "login" ? <SignIn /> : <Verify />}</>;
+  const { step } = useAuth();
+  return <>{step === "login" ? <SignIn /> : <Verify />}</>;
 };
 
 export default StateAuth;
