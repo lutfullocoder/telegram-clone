@@ -26,6 +26,7 @@ import { Switch } from "@/components/ui/switch";
 // import { UploadButton } from "@/lib/uploadthing";
 // import { useMutation } from "@tanstack/react-query";
 import { LogIn, Menu, Moon, Settings2, Sun, Upload, UserPlus, VolumeOff } from "lucide-react";
+import { signOut, useSession } from "next-auth/react";
 // import { signOut, useSession } from "next-auth/react";
 import { useTheme } from "next-themes";
 import { useState } from "react";
@@ -33,7 +34,7 @@ import { useState } from "react";
 const Settings = () => {
   const [isProfileOpen, setIsProfileOpen] = useState(false);
   const { resolvedTheme, setTheme } = useTheme();
-  // const { data: session, update } = useSession();
+  const { data: session, update } = useSession();
 
   // const { mutate, isPending } = useMutation({
   //   mutationFn: async (payload: IPayload) => {
@@ -58,9 +59,9 @@ const Settings = () => {
           </Button>
         </PopoverTrigger>
         <PopoverContent className="p-0 w-80">
-          {/* <h2 className="pt-2 pl-2 text-muted-foreground text-sm">
+          <h2 className="pt-2 pl-2 text-muted-foreground text-sm">
             Settings: <span className="text-white">{session?.currentUser?.email}</span>
-          </h2> */}
+          </h2>
           <Separator className="my-2" />
           <div className="flex flex-col">
             <div
@@ -110,7 +111,7 @@ const Settings = () => {
 
             <div
               className="flex justify-between items-center bg-destructive p-2 cursor-pointer"
-              // onClick={() => signOut()}
+              onClick={() => signOut()}
             >
               <div className="flex items-center gap-1">
                 <LogIn size={16} />
